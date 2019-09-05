@@ -3,20 +3,7 @@
 include_once("config.php");
 
 // Check if form is submitted for user update, then redirect to homepage after update
-if(isset($_POST['update']))
-{   
-    $id = $_POST['id'];
 
-    $name=$_POST['name'];
-    $mobile=$_POST['mobile'];
-    $email=$_POST['email'];
-
-    // update user data
-    $result = mysqli_query($mysqli, "UPDATE users SET name='$name',email='$email',mobile='$mobile' WHERE id=$id");
-
-    // Redirect to homepage to display updated user in list
-    header("Location: index.php");
-}
 ?>
 <?php
 // Display selected user data based on id
@@ -47,12 +34,27 @@ while($user_data = mysqli_fetch_array($result))
 
 <div class="container text-center p-5 bg-light">
       <h1>Todo List</h1>
-      <form class="form-group" action="" method="post" name="add">
-        <input type="text" class="w-50 mx-auto text-center form-control" name="todo" id="todo" aria-describedby="helpId"
+      <form class="form-group" action="edit.php" method="post" name="update">
+        <input type="text" class="w-50 mx-auto text-center form-control" name="todo" id="todo-update" aria-describedby="helpId"
         value=<?php echo $todo;?> />
-        <button type="submit" name="tambah" class="btn btn-outline-primary my-3 text-center">Update</button>
+        <button type="submit" name="ganti" class="btn btn-outline-primary my-3 text-center">Update</button>
       </form>
       </ul>
     </div>
+
+    <?php
+      if(isset($_POST['ganti']))
+      {   
+          $todo=$_POST['todo'];
+          include_once("config.php");
+          echo $todo;
+          // update user data
+          $result = mysqli_query($mysqli, "UPDATE todo SET todo='$todo' WHERE id=$id");
+
+          // Redirect to homepage to display updated user in list
+          header("Location: index.php");
+      }
+    
+    ?>
 </body>
 </html>
