@@ -24,13 +24,11 @@ if(isset($_POST['update']))
 $id = $_GET['id'];
 
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM todo WHERE id=$id");
 
 while($user_data = mysqli_fetch_array($result))
 {
-    $name = $user_data['name'];
-    $email = $user_data['email'];
-    $mobile = $user_data['mobile'];
+    $todo = $user_data['todo'];
 }
 ?>
 <!DOCTYPE html>

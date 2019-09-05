@@ -50,11 +50,10 @@ $result = mysqli_query($mysqli, "SELECT * FROM todo ORDER BY id DESC");
             
               echo '<li class="list-group-item">
                 '.$user_data['todo'].'
-                <a class="btn btn-danger float-right" href="delete.php?id=$user_data[id]"> hapus </a>
-                <a class="btn btn-warning float-right" href="edit.php?id=$user_data[id]" > edit </a>
+                <a class="btn btn-danger float-right" href="delete.php?id='.$user_data['id'].'"> hapus </a>
+                <a class="btn btn-warning float-right" href="edit.php?id='.$user_data['id'].'" > edit </a>
         </li>
         ';
-
 
         }
         ?>
